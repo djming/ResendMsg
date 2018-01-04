@@ -1,6 +1,7 @@
 package com.levi.resendmsg
 
 import android.content.Context
+import android.util.Log
 
 /**
  * Created by levi on 2018/1/4.
@@ -9,14 +10,14 @@ import android.content.Context
  */
  
 class SpHelper(ctx : Context) {
+    val TAG = "SpHelper"
     private val defaultTarget = "15527163373"
 
     private val sp by lazy {
-        ctx.getSharedPreferences("", Context.MODE_PRIVATE)
+        ctx.getSharedPreferences("state", Context.MODE_PRIVATE)
     }
 
-    var target = defaultTarget
-        get() = sp.getString("target", defaultTarget)
+    var target = sp.getString("target", defaultTarget)
         set(value) {
             if (!value.equals(field)) {
                 sp.edit().putString("target", value).apply()
@@ -24,11 +25,10 @@ class SpHelper(ctx : Context) {
             }
         }
 
-    var translate = false
-        get() = sp.getBoolean("", false)
-        set(value : Boolean) {
+    var translate = sp.getBoolean("state", false)
+        set(value) {
             if (value != field) {
-                sp.edit().putBoolean("translate", value).apply()
+                sp.edit().putBoolean("state", value).apply()
                 field = value
             }
         }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ResendMsg</string>
+    <string name="recevie_number">Target Phone Number</string>
+    <string name="translating">TRANSLATING</string>
+    <string name="startTranslate">START TRANSLATE</string>
+    <string name="hint">Please set a number first</string>
 </resources>

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content" >
         <EditText
             android:id="@+id/targetNum"
-            android:hint="目标电话"
+            android:hint="@string/recevie_number"
             android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

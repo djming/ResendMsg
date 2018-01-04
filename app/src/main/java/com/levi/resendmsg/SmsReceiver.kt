@@ -3,15 +3,22 @@ package com.levi.resendmsg
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.telephony.SmsMessage
 
 class SmsReceiver : BroadcastReceiver() {
     private val SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED"
+    private lateinit var sp : SpHelper
 
     override fun onReceive(context: Context, intent: Intent) {
+        sp = SpHelper(context)
+        if (!sp.translate)
+            return
+
         val action = intent.action;
         if (!action.equals(SMS_RECEIVED_ACTION))
             return
+
         val bundle = intent.extras
         val pdusData = bundle?.get("pdus") as Array<Any>
         val msg = arrayOfNulls<SmsMessage>(pdusData.size)
@@ -22,9 +29,20 @@ class SmsReceiver : BroadcastReceiver() {
         val content = StringBuilder()
         val from = StringBuilder()
         for (temp in msg){
-            content.append(temp?.messageBody);
-            from.append(temp?.originatingAddress);
+            content.append(temp?.messageBody)
+            from.append(temp?.originatingAddress)
         }
+        sendMsg(context, from.toString(), content.toString())
+    }
 
+    private fun sendMsg(context: Context, from : String, content : String) {
+        val smsIntent = Intent(Intent.ACTION_VIEW)
+        val msg = String.format("From:%s\r\nContent:%s", from, content)
+
+        smsIntent.setData(Uri.parse("smsto:"))
+        smsIntent.setType("vnd.android-dir/mms-sms")
+        smsIntent.putExtra("address", sp.target)
+        smsIntent.putExtra("sms_body", msg)
+        context.startActivity(smsIntent)
     }
 }

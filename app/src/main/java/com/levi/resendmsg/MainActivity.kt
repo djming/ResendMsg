@@ -2,13 +2,12 @@ package com.levi.resendmsg
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var sp : SpHelper
+    private lateinit var sp: SpHelper
     val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,22 +23,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun switchState() {
-        Log.d(TAG, "TargetNum:" + targetNum.text.toString())
         if (targetNum.text.toString().equals("")) {
             Toast.makeText(this, resources.getString(R.string.hint), Toast.LENGTH_SHORT).show()
             return
         }
         sp.target = targetNum.text.toString()
         sp.translate = !sp.translate
-        Log.d(TAG, "translate:"+sp.translate.toString())
         changeButtonText(sp.translate)
     }
 
-    private fun changeButtonText(state: Boolean) {
-        Log.d(TAG, "State:"+state.toString())
-        if (state)
-            switchBtn.text = resources.getString(R.string.translating)
-        else
-            switchBtn.text = resources.getString(R.string.startTranslate)
-    }
+    private fun changeButtonText(state: Boolean) = if (state)
+        switchBtn.text = resources.getString(R.string.translating)
+    else
+        switchBtn.text = resources.getString(R.string.startTranslate)
 }

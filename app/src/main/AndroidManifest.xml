@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.READ_SMS"/>
     <!--发送短信权限-->
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <!--获取双卡手机信息-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"

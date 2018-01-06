@@ -1,4 +1,4 @@
-package com.levi.resendmsg
+package com.levi.resendmsg.main
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -10,6 +10,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import android.widget.Toast
+import com.levi.resendmsg.R
+import com.levi.resendmsg.helper.SpHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -35,8 +37,6 @@ class MainActivity : AppCompatActivity() {
         sp = SpHelper(this)
 
         checkPermission()
-
-        Toast.makeText(this, ""+ SendMsgHelper.getSIMInfo(this, 1), Toast.LENGTH_LONG).show()
 
         changeButtonText(sp.translate)
         editWrapper.hint = resources.getString(R.string.receive_number)

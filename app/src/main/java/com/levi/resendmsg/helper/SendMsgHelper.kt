@@ -1,4 +1,4 @@
-package com.levi.resendmsg
+package com.levi.resendmsg.helper
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.telephony.SubscriptionInfo
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import android.widget.Toast
+import com.levi.resendmsg.R
 
 /**
  * Created by levi on 2018/1/5.

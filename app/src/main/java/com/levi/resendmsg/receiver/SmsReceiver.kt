@@ -1,15 +1,11 @@
-package com.levi.resendmsg
+package com.levi.resendmsg.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.telephony.*
-import android.util.Log
-import java.lang.reflect.AccessibleObject.setAccessible
-import android.widget.Toast
-import android.text.TextUtils
-import android.telephony.SmsManager.getSmsManagerForSubscriptionId
+import android.telephony.SmsMessage
+import com.levi.resendmsg.helper.SendMsgHelper
+import com.levi.resendmsg.helper.SpHelper
 
 /**
  * Created by levi on 2018/1/4.

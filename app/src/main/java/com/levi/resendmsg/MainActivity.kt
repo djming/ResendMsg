@@ -3,11 +3,11 @@ package com.levi.resendmsg
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,14 +39,28 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, ""+ SendMsgHelper.getSIMInfo(this, 1), Toast.LENGTH_LONG).show()
 
         changeButtonText(sp.translate)
-        editWrapper.hint = targetNum.hint
+        editWrapper.hint = resources.getString(R.string.receive_number)
         targetNum.setText(sp.target, TextView.BufferType.EDITABLE)
+        targetNum.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                switchState()
+            }
+        })
         switchBtn.setOnClickListener({ v -> switchState() })
     }
 
     private fun switchState() {
         if (targetNum.text.toString().equals("")) {
             Toast.makeText(this, resources.getString(R.string.hint), Toast.LENGTH_SHORT).show()
+            sp.target = ""
+            sp.translate = false
+            changeButtonText(sp.translate)
             return
         }
         sp.target = targetNum.text.toString()

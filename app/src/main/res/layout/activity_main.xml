@@ -13,9 +13,9 @@
         android:id="@+id/editWrapper"
         android:layout_width="300dp"
         android:layout_height="wrap_content" >
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/targetNum"
-            android:hint="@string/recevie_number"
+            android:hint="@string/receive_number"
             android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

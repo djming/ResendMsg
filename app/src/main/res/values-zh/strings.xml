@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">短信转发</string>
-    <string name="recevie_number">接收号码</string>
+    <string name="receive_number">接收号码</string>
     <string name="translating">转发中</string>
     <string name="startTranslate">开始转发</string>
     <string name="hint">请设置接收号码</string>

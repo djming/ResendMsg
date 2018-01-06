@@ -49,10 +49,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                switchState()
+                changeButtonText(false)
             }
         })
         switchBtn.setOnClickListener({ v -> switchState() })
+    }
+
+    private fun changeState(state: Boolean) {
+        sp.translate = state
+        changeButtonText(state)
     }
 
     private fun switchState() {

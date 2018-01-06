@@ -7,15 +7,14 @@ import android.telephony.SmsManager
 import android.telephony.SubscriptionInfo
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
-import android.text.TextUtils
 import android.widget.Toast
 
 /**
  * Created by levi on 2018/1/5.
  * Copyright © 2017 levi.
  * All rights reserved.
+ * Contact:dengjinming9668@gmail.com
  */
-
 
 object SendMsgHelper {
     //格式化转发短信
@@ -100,7 +99,7 @@ object SendMsgHelper {
      * @return TelephonyManager的SIM_STATE TelephonyManager.SIM_STATE_READY表示可用
      */
     @Throws(NullPointerException::class)
-    private fun getSIMInfo(context: Context, slotID: Int): Int {
+     fun getSIMInfo(context: Context, slotID: Int): Int {
         val mTelephonyManager = context
                 .getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         val clz = mTelephonyManager.javaClass

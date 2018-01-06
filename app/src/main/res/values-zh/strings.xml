@@ -8,4 +8,6 @@
     <string name="sendingMsg">正在发送短信</string>
     <string name="sendSuccess">短信发送成功</string>
     <string name="getSIMInfoError">获取SIM卡信息失败，无法发送短信</string>
+    <string name="requestPermissionInfo">没有权限将无法正常转发短信</string>
+    <string name="grantPermissionInfo">请前往设置修改权限，否则转发无法成功</string>
 </resources>

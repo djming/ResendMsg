@@ -11,6 +11,13 @@ import android.widget.Toast
 import android.text.TextUtils
 import android.telephony.SmsManager.getSmsManagerForSubscriptionId
 
+/**
+ * Created by levi on 2018/1/4.
+ * Copyright © 2017 levi.
+ * All rights reserved.
+ * Contact:dengjinming9668@gmail.com
+ */
+
 class SmsReceiver : BroadcastReceiver() {
     val TAG = "SmsReceiver"
     private val SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED"
@@ -38,7 +45,6 @@ class SmsReceiver : BroadcastReceiver() {
             content.append(temp?.messageBody)
             from.append(temp?.originatingAddress)
         }
-        //SendMsgHelper.sendMsgWithOneSIM(sp.target, from.toString(), content.toString())
         SendMsgHelper.sendMsgWithTwoSIM(context, sp.target, from.toString(), content.toString())
     }
 }

@@ -4,4 +4,7 @@
     <string name="translating">TRANSLATING</string>
     <string name="startTranslate">START TRANSLATE</string>
     <string name="hint">Please set a number first</string>
+    <string name="sendingMsg">Senging message...</string>
+    <string name="sendSuccess">Sent message success!</string>
+    <string name="getSIMInfoError">Get SIM card message error</string>
 </resources>

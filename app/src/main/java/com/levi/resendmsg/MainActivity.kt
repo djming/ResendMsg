@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         changeButtonText(sp.translate)
 
         editWrapper.hint = targetNum.hint
-        targetNum.setText(sp.target, TextView.BufferType.EDITABLE)
+        //targetNum.setText(sp.target, TextView.BufferType.EDITABLE)
 
         switchBtn.setOnClickListener({ v -> switchState() })
     }

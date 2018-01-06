@@ -5,4 +5,7 @@
     <string name="translating">转发中</string>
     <string name="startTranslate">开始转发</string>
     <string name="hint">请设置接收号码</string>
+    <string name="sendingMsg">正在发送短信</string>
+    <string name="sendSuccess">短信发送成功</string>
+    <string name="getSIMInfoError">获取SIM卡信息失败，无法发送短信</string>
 </resources>

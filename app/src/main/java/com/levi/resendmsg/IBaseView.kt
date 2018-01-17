@@ -8,6 +8,6 @@ package com.levi.resendmsg
  */
 
 
-interface IBaseView<out T : IBasePresenter> {
-    val presenter : T
+interface IBaseView<T : IBasePresenter> {
+    var presenter : T
 }

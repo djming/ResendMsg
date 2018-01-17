@@ -1,5 +1,7 @@
 package com.levi.resendmsg.main
 
+import android.app.Activity
+import android.content.Context
 import com.levi.resendmsg.IBasePresenter
 import com.levi.resendmsg.IBaseView
 
@@ -12,10 +14,17 @@ import com.levi.resendmsg.IBaseView
  
 class MainContractor {
     interface IMainPresenter : IBasePresenter {
-
+        fun changeState(target : String = "")
+        fun checkPermission(permission : Array<String>)
+        fun requestPermission(permission : Array<String>)
+        fun requestPermissionResult(grantResults: IntArray)
     }
 
     interface IMainView : IBaseView<IMainPresenter> {
-
+        val context : Context
+        val activity : Activity
+        fun quit()
+        fun changeText(text : String)
+        fun changeButtonState(state : Boolean)
     }
 }

@@ -21,7 +21,7 @@ class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         sp = SpHelper(context)
-        if (!sp.translate)
+        if (!sp.state)
             return
 
         val action = intent.action;

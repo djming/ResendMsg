@@ -12,21 +12,21 @@ import android.util.Log
  
 class SpHelper(ctx : Context) {
     val TAG = "SpHelper"
-    private val defaultTarget = "15527163373"
+    private val defaultTarget = ""
 
     private val sp by lazy {
         ctx.getSharedPreferences("state", Context.MODE_PRIVATE)
     }
 
-    var target = sp.getString("target", defaultTarget)
+    var target = sp.getString("target", defaultTarget)!!
         set(value) {
-            if (!value.equals(field)) {
+            if (value != field) {
                 sp.edit().putString("target", value).apply()
                 field = value
             }
         }
 
-    var translate = sp.getBoolean("state", false)
+    var state = sp.getBoolean("state", false)
         set(value) {
             if (value != field) {
                 sp.edit().putBoolean("state", value).apply()

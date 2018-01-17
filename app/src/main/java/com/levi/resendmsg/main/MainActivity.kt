@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.RadioButton
 import android.widget.TextView
-import android.widget.Toast
 import com.levi.resendmsg.R
-import com.levi.resendmsg.helper.SpHelper
+import com.levi.resendmsg.helper.SendMsgHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -61,5 +61,15 @@ class MainActivity : AppCompatActivity(), MainContractor.IMainView {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         presenter.requestPermissionResult(grantResults)
+    }
+
+    override fun addSIM(num: String, slotID : Int) {
+        val radioBtn = RadioButton(this)
+        radioBtn.text = if(num.startsWith("+")) num.subSequence(3, num.length) else num
+        radioBtn.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked)
+                presenter.changeSlotID(slotID)
+        }
+        simList.addView(radioBtn)
     }
 }

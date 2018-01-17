@@ -6,6 +6,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.levi.resendmsg.R
+import com.levi.resendmsg.helper.SendMsgHelper
 import com.levi.resendmsg.helper.SpHelper
 
 /**
@@ -29,7 +30,15 @@ class MainPresenter(private val view : MainContractor.IMainView) : MainContracto
         checkPermission(permissions)
         view.changeButtonState(sp.state)
         view.changeText(sp.target)
+        for ((index, sInfo) in SendMsgHelper.getSIMList(view.context)!!.withIndex()) {
+            view.addSIM(sInfo.number, index)
+        }
     }
+
+    override fun changeSlotID(slotID: Int) {
+        sp.slotID = slotID
+    }
+
     override fun changeState(target: String) {
         sp.target = target
         if (target == "")

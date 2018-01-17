@@ -9,4 +9,5 @@
     <string name="getSIMInfoError">Get SIM card message error</string>
     <string name="requestPermissionInfo">Please grant permission or app cannot work.</string>
     <string name="grantPermissionInfo">You can grant permission in SETTING</string>
+    <string name="simList">SIM List:</string>
 </resources>

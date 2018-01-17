@@ -41,6 +41,10 @@ class SmsReceiver : BroadcastReceiver() {
             content.append(temp?.messageBody)
             from.append(temp?.originatingAddress)
         }
-        SendMsgHelper.sendMsgWithTwoSIM(context, sp.target, from.toString(), content.toString())
+        if (sp.slotID == -1) {
+            SendMsgHelper.sendMsgWithTwoSIM(context, sp.target, from.toString(), content.toString())
+        } else {
+            SendMsgHelper.sendMsgWithCertainSIM(context, 1, sp.target, from.toString(), content.toString())
+        }
     }
 }

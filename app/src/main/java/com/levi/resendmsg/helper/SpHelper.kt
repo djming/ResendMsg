@@ -33,4 +33,11 @@ class SpHelper(ctx : Context) {
                 field = value
             }
         }
+    var slotID = sp.getInt("slotID", -1)
+        set(value) {
+            if (value != field) {
+                sp.edit().putInt("slotID", value).apply()
+                field = value
+            }
+        }
 }

@@ -34,8 +34,8 @@ object SendMsgHelper {
         val smsIntent = Intent(Intent.ACTION_VIEW)
 
         val msg = createMsg(from, content)
-        smsIntent.setData(Uri.parse("smsto:"))
-        smsIntent.setType("vnd.android-dir/mms-sms")
+        smsIntent.data = Uri.parse("smsto:")
+        smsIntent.type = "vnd.android-dir/mms-sms"
         smsIntent.putExtra("address", target)
         smsIntent.putExtra("sms_body", msg)
         context.startActivity(smsIntent)
@@ -76,14 +76,18 @@ object SendMsgHelper {
        }
     }
 
+    /**
+     * @param context context
+     * @param slotID SIM卡顺序
+     * @param target 目标手机号
+     * @param from 短信来源
+     * @param content 短信内容
+     */
     @Throws(NullPointerException::class)
     fun sendMsgWithCertainSIM(context: Context, slotID: Int,
                                   target: String, from: String, content: String) {
-        val sManager = context
-                .getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
-
-        val list = sManager.activeSubscriptionInfoList
-        val sInfo: SubscriptionInfo = list[slotID]
+        val list = getSIMList(context)
+        val sInfo: SubscriptionInfo = list!![slotID]
         val subId = sInfo.subscriptionId
         val manager = SmsManager
                 .getSmsManagerForSubscriptionId(subId)
@@ -108,5 +112,12 @@ object SendMsgHelper {
         val mtd = clz.getMethod("getSimState", Int::class.javaPrimitiveType)
         mtd.isAccessible = true
         return mtd.invoke(mTelephonyManager, slotID) as Int
+    }
+
+    fun getSIMList(context : Context): List<SubscriptionInfo>? {
+        val sManager = context
+                .getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) as SubscriptionManager
+
+        return sManager.activeSubscriptionInfoList
     }
 }

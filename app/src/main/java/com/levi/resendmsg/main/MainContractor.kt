@@ -18,6 +18,7 @@ class MainContractor {
         fun checkPermission(permission : Array<String>)
         fun requestPermission(permission : Array<String>)
         fun requestPermissionResult(grantResults: IntArray)
+        fun changeSlotID(slotID : Int)
     }
 
     interface IMainView : IBaseView<IMainPresenter> {
@@ -26,5 +27,6 @@ class MainContractor {
         fun quit()
         fun changeText(text : String)
         fun changeButtonState(state : Boolean)
+        fun addSIM(num : String, slotID : Int)
     }
 }

@@ -28,5 +28,6 @@ class MainContractor {
         fun changeText(text : String)
         fun changeButtonState(state : Boolean)
         fun addSIM(num : String, slotID : Int)
+        fun showNotification()
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.NotificationCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.RadioButton
@@ -71,5 +72,9 @@ class MainActivity : AppCompatActivity(), MainContractor.IMainView {
                 presenter.changeSlotID(slotID)
         }
         simList.addView(radioBtn)
+    }
+
+    override fun showNotification() {
+        var notification = NotificationCompat.Builder(this)
     }
 }

@@ -29,7 +29,7 @@ class SmsReceiver : BroadcastReceiver() {
             return
 
         val bundle = intent.extras
-        val pdusData = bundle?.get("pdus") as Array<Any>
+        val pdusData = bundle?.get("pdus") as Array<*>
         val msg = arrayOfNulls<SmsMessage>(pdusData.size)
         for ( i in 0 until msg.size){
             val pdus = pdusData[i] as ByteArray

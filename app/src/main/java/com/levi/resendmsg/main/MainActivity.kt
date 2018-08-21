@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), MainContractor.IMainView {
                 presenter.changeState()
             }
         })
-        switchBtn.setOnClickListener({ _ -> presenter.changeState(targetNum.text.toString()) })
+        switchBtn.setOnClickListener { _ -> presenter.changeState(targetNum.text.toString()) }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
